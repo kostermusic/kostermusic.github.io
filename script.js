@@ -13,6 +13,7 @@ window.onload = function() {
     const sourceTwo = document.querySelector(".audio-source-2")
     const files = document.querySelector(".file")
     audio.loop = "true";
+    audio.preload = "auto";
 
     let switchBonfire = false;
     let switchMenu = false;
