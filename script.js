@@ -9,15 +9,18 @@ window.onload = function() {
     const music = document.querySelector(".music")
     const songs = document.querySelectorAll(".song")
     const turn = document.querySelector(".turn")
+    const lamp = document.querySelector(".lamp")
     const source = document.querySelector(".audio-source-1")
     const sourceTwo = document.querySelector(".audio-source-2")
     const files = document.querySelector(".file")
     audio.loop = "true";
     audio.preload = "auto";
 
-    let switchBonfire = false;
+    let switchImg = false;
     let switchMenu = false;
     let switchTurn = false;
+    let LampOrFire = false;
+    let imgName;
 
     files.addEventListener('change', function(){
         source.src = URL.createObjectURL(this.files[0])
@@ -51,15 +54,11 @@ window.onload = function() {
     })
 
     bonfire.addEventListener("click", ()=>{
-        if (switchBonfire == false) {
-            bonfire.src = "images/bonfire-on.gif";
-            switchBonfire = true;
-            audio.play();
+        if (switchImg == false) {
+            switchLampFire()
         }
         else {
-            bonfire.src = "images/bonfire-off.png";
-            switchBonfire = false;
-            audio.pause();
+            switchLampFire()
         };
     });
 
@@ -96,9 +95,59 @@ window.onload = function() {
         }
     })
 
+    lamp.addEventListener("click", ()=>{
+        if (LampOrFire == false) {
+            LampOrFire = true
+            switchLampFire()
+            bonfire.src = imgName
+        }
+        else {
+            LampOrFire = false
+            switchLampFire()
+            bonfire.src = imgName
+        }
+    })
+
     function playMusic() {
-        bonfire.src = "images/bonfire-on.gif";
+        if (LampOrFire == false) {
+            imgName = "images/bonfire-on.gif";
+        }
+        else {
+            imgName = "images/lamp_on.png";
+        }
+        bonfire.src = imgName
         audio.play();
+    }
+
+    function switchLampFire() {
+        if (LampOrFire == false) {
+            if (switchImg == false) {
+                imgName = "images/bonfire-on.gif";
+                bonfire.src = imgName;
+                switchImg = true;
+                audio.play();
+            }
+            else {
+                imgName = "images/bonfire-off.png";
+                bonfire.src = imgName;
+                switchImg = false;
+                audio.pause();
+            }
+        }
+        else {
+            if (switchImg == false) {
+                imgName = "images/lamp_on.png";
+                bonfire.src = imgName;
+                switchImg = true;
+                audio.play();
+            }
+            else {
+                imgName = "images/lamp_off.png";
+                bonfire.src = imgName;
+                switchImg = false;
+                audio.pause();
+            }
+        }
     }
 
 };

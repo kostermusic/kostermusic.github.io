@@ -44,7 +44,7 @@ body {
     flex-wrap: wrap;
 }
 
-.song {
+.btn {
     width: 100%;
     color: gray;
     font-size: 20px;
@@ -55,13 +55,11 @@ body {
 }
 
 .turn {
-    width: 50%;
-    color: gray;
-    font-size: 20px;
-    background: lightgray;
-    border: 2.5px gray solid;
-    padding: 10px;
-    margin: 5px;
+    width: 45%;
+}
+
+.lamp {
+    width: 15%;
 }
 
 .turned {
